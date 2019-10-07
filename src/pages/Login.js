@@ -40,10 +40,10 @@ export default function Login({ history }){
                 />
                 <button type="submit">Entrar</button>
             </form>
-            <a href={'/inicio'} className="forgot">
+            <a href={'/novaSenha'} className="forgot">
                 <span>Esqueceu a sua senha?</span>
             </a>
-            <span className="signup">Não tem uma conta? <a href="/novaSenha">Crie uma</a></span>
+            <span className="signup">Não tem uma conta? <a href="/cadastro">Crie uma</a></span>
             <div className="background"></div>
         </div>
     );
