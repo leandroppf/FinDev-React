@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -12,7 +12,7 @@ export default function Routes(){
             <Route path="/" exact component={Login}/>
             <Route path="/cadastro" component={SignUp}/>
             <Route path="/novaSenha" component={ForgotPass}/>
-            <Route path="/inicio" component={Main}/>
+            <Route path="/inicio/:id" component={Main}/>
         </BrowserRouter>
     );
 }

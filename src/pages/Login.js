@@ -24,6 +24,7 @@ export default function Login({ history }){
         <div className="login-container">
             <form onSubmit={handleSubmit}>
                 <img src={logo} alt="FinDev"/>
+                <h1>FinDev</h1>
                 <input
                     placeholder="Usuário"
                     type="text"

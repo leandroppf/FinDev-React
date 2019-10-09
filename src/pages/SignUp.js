@@ -6,37 +6,79 @@ import api from '../services/api';
 import logo from '../assets/logo.svg'
 
 export default function SignUp({ history }){
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passRepeated, setPassRepeated] = useState('');
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        
+        if(!(password === passRepeated)){
+            var errorSpan = document.getElementById('errorSpan');
+            return (errorSpan.style.display = 'block');
+        }
+
+        await api.post('/register', {
+            username,
+            password,
+            email
+        }).then(response => {
+            console.log(response.data);
+            const { _id } = response.data;
+
+            history.push(`/inicio/${_id}`);
+        }).catch(error => {            
+            return alert(error.response.data.msg);
+        })
+    }
+
     return(
         <div className="main-signup-container">
             <div className="signup-container">
                 <div className="signup-logo">
                     <h1>Cadastro FinDev</h1>
                     <img src={logo} alt="FinDev"/>
+                    <h2>FinDev</h2>
                 </div>
                 <div className="signup-form-container">
                     <h1>Cadastro FinDev</h1>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="signup-form-itens">
                             <input
                                 placeholder="Usuário do GitHub"
                                 type="text"
+                                value={username}
+                                onChange={e => setUsername(e.target.value)}
+                                autoCapitalize="none"
                                 required
                             />
                             <input
                                 placeholder="E-mail"
                                 type="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                autoCapitalize="none"
+                                autoComplete="none"
                                 required
                             />
                             <input 
                                 placeholder="Senha"
                                 type="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                                 required
                             />
                             <input 
                                 placeholder="Repita a senha"
                                 type="password"
+                                value={passRepeated}
+                                onChange={e => setPassRepeated(e.target.value)}
                                 required
                             />
+                            <div className="span-div">
+                                <span id="errorSpan">As senhas estão diferentes.</span>
+                            </div>
                             <button type="submit">Cadastrar</button>
                             <span className="signup">Já possui um cadastro? <a href="/">Entrar</a></span>
                         </div>
