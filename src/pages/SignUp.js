@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../css/SignUp.css';
 
 import api from '../services/api';
 
