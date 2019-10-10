@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import api from '../services/api';
+import { login } from "../services/auth";
 
 import logo from '../assets/logo.svg'
 
@@ -11,12 +12,21 @@ export default function Login({ history }){
     async function handleSubmit(e){
         e.preventDefault();
 
-        const response = await api.post('/login', {
-            username,
-            password
-        })
-
-        history.push('/inicio');
+        if(!username || !password){
+            return alert("Preencha usuário e senha para continuar!");
+        }else{
+            try{
+                const response = await api.post('/auth', {
+                    user: username,
+                    password
+                });
+                login(response.data.token);
+                const { _id } = response.data.account;
+                history.push(`/inicio/${_id}`);
+            }catch(error){
+                return alert(error.response.data.error);
+            }
+        }
     }
 
     return(
