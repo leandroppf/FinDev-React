@@ -24,7 +24,7 @@ export default function SignUp({ history }){
             password,
             email
         }).then(response => {
-            if(response.status == 201 && response.data.user){
+            if(response.status == 200 && response.data.user){
                 alert("Cadastro efetuado com sucesso! Faça login com o usuário " + response.data.user)
             
                 history.push(`/`);
