@@ -7,17 +7,6 @@
     align-items: center;
 }
 
-.background {
-    background: url('../assets/backImage.jpg');
-    opacity: 0.1;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    z-index: -1;
-    position: absolute;
-}
-
 form img {
     margin-bottom: 10px;
     opacity: 0.8;

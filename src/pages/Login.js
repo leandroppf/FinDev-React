@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import api from '../services/api';
-import { login } from "../services/auth";
+import { login, setAccount } from "../services/auth";
 
 import logo from '../assets/logo.svg'
 
@@ -21,10 +21,16 @@ export default function Login({ history }){
                     password
                 });
                 login(response.data.token);
+                setAccount(response.data.account);
                 const { _id } = response.data.account;
                 history.push(`/inicio/${_id}`);
             }catch(error){
-                return alert(error.response.data.error);
+                if(error.response && error.response.data.error){
+                    return alert(error.response.data.error);
+                }
+                if(error.message){
+                    return alert(error.message);
+                }
             }
         }
     }

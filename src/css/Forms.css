@@ -26,17 +26,6 @@
     opacity: 0.8;
 }
 
-.background {
-    background: url('../assets/backImage.jpg');
-    opacity: 0.2;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    z-index: -1;
-    position: absolute;
-}
-
 .signup-logo {
     width: 50%;
     display: flex;

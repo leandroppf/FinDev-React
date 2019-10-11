@@ -5,6 +5,17 @@
   box-sizing: border-box;
 }
 
+.background {
+  background: url('../src/assets/backImage.jpg');
+  opacity: 0.1;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  position: absolute;
+}
+
 html, body, #root {
   height: 100%;
 }

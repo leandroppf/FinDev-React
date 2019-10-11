@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import api from '../services/api';
 
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.svg';
 import { Exception } from 'handlebars';
 
 export default function SignUp({ history }){
@@ -24,7 +24,7 @@ export default function SignUp({ history }){
             password,
             email
         }).then(response => {
-            if(response.status == 200 && response.data.user){
+            if(response.status === 200 && response.data.user){
                 alert("Cadastro efetuado com sucesso! Faça login com o usuário " + response.data.user)
             
                 history.push(`/`);
@@ -32,7 +32,6 @@ export default function SignUp({ history }){
                 throw new Exception('Erro ao cadastrar.');
             }
         }).catch(error => {
-            console.log(error);
             if(error.response && error.response.data.msg){
                 return alert(error.response.data.msg);
             }
