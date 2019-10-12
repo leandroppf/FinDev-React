@@ -45,6 +45,7 @@ export default function Login({ history }){
                     type="text"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
+                    autoCapitalize="none"
                     required
                 />
                 <input 

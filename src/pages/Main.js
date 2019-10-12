@@ -20,7 +20,7 @@ export default function Main({ history, match }){
                 headers: {
                     user: match.params.id
                 }
-            })
+            });
 
             setUsers(response.data);
             setAccount(getAccount());
@@ -32,7 +32,7 @@ export default function Main({ history, match }){
     async function handleLike(id) {
         await api.post(`/devs/${id}/likes`, null, {
             headers: {user: match.params.id}
-        })
+        });
 
         setUsers(users.filter(user => user._id !== id));
     }
@@ -40,7 +40,7 @@ export default function Main({ history, match }){
     async function handleDislike(id) {
         await api.post(`/devs/${id}/dislikes`, null, {
             headers: {user: match.params.id}
-        })
+        });
 
         setUsers(users.filter(user => user._id !== id));
     }
@@ -65,14 +65,20 @@ export default function Main({ history, match }){
                                 <p>{account.bio}</p>
                             </footer>
                             <div className="user-info-buttons">
-                                <button>
+                                <button type="button" onClick={() => {
+                                    history.push(`/sem-interesse/${account._id}`);
+                                }}>
                                     Sem interesse
                                 </button>
-                                <button>
+                                <button type="button" onClick={() => {
+                                    history.push(`/curtidas/${account._id}`);
+                                }}>
                                     Curtidas
                                 </button>
                             </div>
-                            <button className="match-button">
+                            <button className="match-button" type="button" onClick={() => {
+                                history.push(`/combinacoes/${account._id}`);
+                            }}>
                                 Combinações
                             </button>
                     </div>
@@ -99,7 +105,7 @@ export default function Main({ history, match }){
                             ))}
                         </ul>
                     ) : (
-                        <div className="empty">Acabou :(</div>
+                        <div className="empty">Ainda não existem mais usuários para interagir.</div>
                     )}
                 </div>
             </div>
