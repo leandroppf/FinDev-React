@@ -33,7 +33,7 @@ const Routes = () => {
                 <PrivateRoute path="/inicio/:id" component={Main}/>
                 <PrivateRoute path="/sem-interesse/:id" component={Dislikes}/>
                 <PrivateRoute path="/curtidas/:id" component={Likes}/>
-                <PrivateRoute path="combinacoes/:id" component={Matchs}/>
+                <PrivateRoute path="/combinacoes/:id" component={Matchs}/>
                 <Route path="*" component={Login}/>
             </Switch>
         </BrowserRouter>
