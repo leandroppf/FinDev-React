@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import api from '../services/api';
 
 import logo from '../assets/logo.svg'
+import { Exception } from 'handlebars';
 
 export default function ForgotPass({ history }){
     const [username, setUsername] = useState('');
@@ -17,6 +18,27 @@ export default function ForgotPass({ history }){
             var errorSpan = document.getElementById('errorSpan');
             return (errorSpan.style.display = 'block');
         }
+
+        await api.put('/password', {
+            user: username,
+            email,
+            password
+        }).then(response => {
+            if(response.status === 200 && response.data.user){
+                alert("Senha alterada com sucesso! Faça login com o usuário " + response.data.user)
+            
+                history.push(`/`);
+            }else{
+                throw new Exception('Erro ao cadastrar.');
+            }
+        }).catch(error => {
+            if(error.response && error.response.data.msg){
+                return alert(error.response.data.msg);
+            }
+            if(error.message){
+                return alert(error.message);
+            }
+        })
 
     }
 
