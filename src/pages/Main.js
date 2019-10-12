@@ -6,10 +6,11 @@ import api from '../services/api';
 import logo from '../assets/logo.svg';
 import like from '../assets/likeYellow.svg';
 import dislike from '../assets/cancel.svg';
+import logoutIcon from '../assets/logout.svg';
 
-import { getAccount } from "../services/auth";
+import { getAccount, logout } from "../services/auth";
 
-export default function Main({ match }){
+export default function Main({ history, match }){
     const [users, setUsers] = useState([]);
     const [account, setAccount] = useState({});
 
@@ -44,16 +45,38 @@ export default function Main({ match }){
         setUsers(users.filter(user => user._id !== id));
     }
 
+    async function logoutFunction() {
+        logout();
+        history.push(`/`);
+    }
+
     return(
         <div className="main-container">
             <div className="content">
-                <div className="user-info">
-                    <img src={account.avatar} alt={account.name}/>
-                        <footer>
-                            <strong>{account.name}</strong>
-                            <p>{account.bio}</p>
-                        </footer>
+                <div className="left-info">
+                    <div className="left-info-logo">
+                         <img className="left-info-logo" src={logo} alt="FinDev"/>
+                         <h1>FinDev</h1>
                     </div>
+                    <div className="user-info">
+                        <img src={account.avatar} alt={account.name}/>
+                            <footer>
+                                <strong>{account.name}</strong>
+                                <p>{account.bio}</p>
+                            </footer>
+                            <div className="user-info-buttons">
+                                <button>
+                                    Sem interesse
+                                </button>
+                                <button>
+                                    Curtidas
+                                </button>
+                            </div>
+                            <button className="match-button">
+                                Combinações
+                            </button>
+                    </div>
+                </div>
                 <div className="main-list">
                     { users.length > 0 ? (
                         <ul>
@@ -81,6 +104,11 @@ export default function Main({ match }){
                 </div>
             </div>
             <div id="backMain" className="background"></div>
+            <div className="logout">
+                <button type="button" onClick={() => logoutFunction()}>
+                    <img src={logoutIcon} alt="Logout"/>
+                </button>
+            </div>
         </div>
     )
 }

@@ -6,6 +6,9 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import ForgotPass from './pages/ForgotPass';
 import Main from './pages/Main';
+import Dislikes from './pages/Dislikes';
+import Likes from './pages/Likes';
+import Matchs from './pages/Matchs';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -28,6 +31,9 @@ const Routes = () => {
                 <Route path="/cadastro" component={SignUp}/>
                 <Route path="/novaSenha" component={ForgotPass}/>
                 <PrivateRoute path="/inicio/:id" component={Main}/>
+                <PrivateRoute path="/sem-interesse/:id" component={Dislikes}/>
+                <PrivateRoute path="/curtidas/:id" component={Likes}/>
+                <PrivateRoute path="combinacoes/:id" component={Matchs}/>
                 <Route path="*" component={Login}/>
             </Switch>
         </BrowserRouter>

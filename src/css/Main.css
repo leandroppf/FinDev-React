@@ -15,17 +15,30 @@
     height: 100%;
 }
 
-.user-info {
-    height: 600px;
+.left-info {
     max-width: 400px;
-    background-color: #fff;
-    border-radius: 5px;
     width: 35%;
-    margin: auto 10px auto 0;
+    margin: auto 20px auto 0;
     opacity: 0.8;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.left-info-logo {
+    text-align: center;
+    margin: auto 0 0 0;
+}
+
+.user-info {
+    border-radius: 0 5px 5px 0;
     padding: 30px;
+    background-color: #fff;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 auto 0;
 }
 
 .main-list {
@@ -33,11 +46,12 @@
     width: 65%;
     background-color: #fff;
     border-radius: 5px;
-    margin: auto 0 auto 10px;
+    margin: auto;
     overflow: auto;
     text-align: center;
     padding: 30px;
     opacity: 0.9;
+    max-width: 1200px;
 }
 
 .main-list ul {
@@ -51,6 +65,8 @@
     display: flex;
     flex-direction: column;
     min-width: 50%;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .main-list ul li img {
@@ -118,7 +134,6 @@
 }
 
 .user-info footer {
-    flex: 1;
     background: #fff;
     padding: 15px 0;
     text-align: left;
@@ -135,4 +150,172 @@
     line-height: 20px;
     color: #999;
     margin-top: 5px;
+}
+
+.user-info-buttons {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 10px 0;
+}
+
+.user-info-buttons button {
+    width: 100%;
+    border: 0;
+    border-radius: 3px;
+    height: 35px;
+    font-size: 14px;
+    background: #290A59;
+    color: #FFF;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.user-info-buttons button:hover {
+    background: #431B91;
+}
+
+.match-button {
+    width: 97%;
+    border: 0;
+    border-radius: 3px;
+    height: 35px;
+    font-size: 14px;
+    background: #ff7c00;
+    color: #FFF;
+    cursor: pointer;
+    margin: auto;
+}
+
+.match-button:hover {
+    background: #ff8c00;
+}
+
+.logout {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.logout button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.logout button img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.logout button:hover img {
+    transform: translateY(-5px);
+    transition: all 0.2s;
+}
+
+@media screen and (max-width: 875px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .left-info {
+        flex-direction: row;
+        width: 100%;
+        max-width: 100%;
+        background-color: #FFF;
+        height: 10%;
+        justify-content: normal;
+        margin: 0 0 20px 0;
+
+    }
+
+    .left-info-logo {
+        margin: 10px;
+        height: unset;
+    }
+
+    .left-info-logo img {
+        max-height: 50px;
+        max-width: 50px;
+        margin: 0;
+    }
+
+    .left-info-logo h1 {
+        margin: 0;
+        font-size: 20px;
+        color: #000;
+    }
+
+    .user-info {
+        background-color: unset;
+        height: unset;
+        flex-direction: row;
+        height: 100%;
+        padding: 20px;
+        width: 100%;
+        border-radius: unset;
+    }
+
+    .user-info img {
+        max-width: 50px;
+        max-height: 50px;
+        margin: 0;
+        border-radius: 5px;
+    }
+
+    .user-info footer {
+        padding: 0;
+        margin: auto 10px;
+        flex: 1;
+    }
+
+    .user-info footer p {
+        display: none;
+    }
+
+    .user-info-buttons {
+        margin: auto 10px auto 0;
+        height: fit-content;
+    }
+
+    .user-info-buttons button {
+        min-width: 100px;
+    }
+
+    .match-button {
+        width: unset;
+        min-width: 100px;
+    }
+
+    .main-list {
+        height: 85%;
+        margin: 0 auto 20px auto;
+    }
+
+    .main-list ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .left-info-logo {
+        display: none;
+    }
+
+    .user-info footer strong {
+        display: none;
+    }
+
+    .main-list ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .user-info img {
+        display: none;
+    }
+
+    .user-info footer {
+        display: none;
+    }
 }
