@@ -25,7 +25,7 @@ export default function SignUp({ history }){
             email
         }).then(response => {
             if(response.status === 200 && response.data.user){
-                alert("Cadastro efetuado com sucesso! Faça login com o usuário " + response.data.user)
+                alert("Cadastro efetuado com sucesso! Faça login com o usuário " + response.data.user);
             
                 history.push(`/`);
             }else{
@@ -38,7 +38,7 @@ export default function SignUp({ history }){
             if(error.message){
                 return alert(error.message);
             }
-        })
+        });
     }
 
     return(

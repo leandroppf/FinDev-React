@@ -25,11 +25,11 @@ export default function ForgotPass({ history }){
             password
         }).then(response => {
             if(response.status === 200 && response.data.user){
-                alert("Senha alterada com sucesso! Faça login com o usuário " + response.data.user)
+                alert("Senha alterada com sucesso! Faça login com o usuário " + response.data.user);
             
                 history.push(`/`);
             }else{
-                throw new Exception('Erro ao cadastrar.');
+                throw new Exception('Erro ao mudar senha.');
             }
         }).catch(error => {
             if(error.response && error.response.data.msg){
@@ -38,7 +38,7 @@ export default function ForgotPass({ history }){
             if(error.message){
                 return alert(error.message);
             }
-        })
+        });
 
     }
 

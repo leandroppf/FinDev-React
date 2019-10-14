@@ -75,7 +75,7 @@ export default function Dislikes({ history, match }){
                                         <strong>{user.name}</strong>
                                         <p>{user.bio}</p>
                                         <p>Usuário do GitHub: {user.user}</p>
-                                        <p>Email: {user.email}</p>
+                                        <p>E-mail: {user.email}</p>
                                     </footer>
                                 </li>
                             ))}
