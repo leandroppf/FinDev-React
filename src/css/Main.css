@@ -212,6 +212,66 @@
     transition: all 0.2s;
 }
 
+.match-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.main-container .matchImg {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.match-container .matchAvatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    margin: 10px 0 0 0;
+}
+
+.match-container strong {
+    font-size: 32px;
+    color: #FFF;
+    margin-top: 30px;
+}
+
+.match-container p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    max-width: 400px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.match-container button {
+    border: 0;
+    background: none;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    margin-top: 30px;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.match-container span {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 400px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 20px;
+}
+
 @media screen and (max-width: 875px) {
     .content {
         flex-direction: column;

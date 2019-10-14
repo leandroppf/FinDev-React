@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
 import '../css/Main.css';
+import baseUrl from '../config/config';
 
 import api from '../services/api';
 
 import logo from '../assets/logo.svg';
 import logoutIcon from '../assets/logout.svg';
+import itsMatch from '../assets/match.svg';
 
 import { getAccount, logout } from "../services/auth";
 
 export default function Dislikes({ history, match }){
     const [users, setUsers] = useState([]);
     const [account, setAccount] = useState({});
+
+    const [matchDev, setMatchDev] = useState(null);
 
     useEffect(() => {
         async function loadUsers(){
@@ -25,6 +30,17 @@ export default function Dislikes({ history, match }){
         }
 
         loadUsers();
+    }, [match.params.id]);
+
+    useEffect(() => {
+        const socket = io(baseUrl, {
+            query: { user: match.params.id}
+        });
+
+        socket.on('match', dev => {
+            setMatchDev(dev);
+        });
+        
     }, [match.params.id]);
 
     async function logoutFunction() {
@@ -91,6 +107,18 @@ export default function Dislikes({ history, match }){
                     <img src={logoutIcon} alt="Logout"/>
                 </button>
             </div>
+
+            { matchDev && (
+                <div className="match-container">
+                    <img className="matchImg" src={itsMatch} alt="Combinação"/>
+                    <span>Parabéns!!!</span>   
+                    <span>Você obteve uma combinação com</span>
+                    <img className="matchAvatar" src={matchDev.avatar} alt=""/>
+                    <strong>{matchDev.name}</strong>
+                    <p>{matchDev.bio}</p>
+                    <button type="button" onClick={() => setMatchDev(null)}>Fechar</button>
+                </div>
+            )}
         </div>
     )
 }
