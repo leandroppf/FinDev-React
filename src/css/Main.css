@@ -379,3 +379,17 @@
         display: none;
     }
 }
+
+@media screen and (max-height: 850px) {
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    .user-info img {
+        width: 80%;
+    }
+
+    .user-info {
+        height: unset;
+    }
+}
